@@ -1,3 +1,4 @@
+import os
 from pathlib import Path
 
 from environs import Env
@@ -21,7 +22,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'salons',
+    'salon'
 ]
 
 MIDDLEWARE = [
@@ -39,7 +40,7 @@ ROOT_URLCONF = 'beauty_city.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -86,16 +87,16 @@ USE_I18N = True
 USE_TZ = True
 
 STATICFILES_DIRS = [
-    Path(BASE_DIR, 'assets'),
+    Path(BASE_DIR, 'static'),
 ]
 
-STATIC_URL = 'static/'
+STATIC_URL = '/static/'
 
-STATIC_ROOT = Path(BASE_DIR, 'static')
+STATIC_ROOT = Path(BASE_DIR, 'staticfiles')
 
 MEDIA_ROOT = Path(BASE_DIR, 'media')
 
-MEDIA_URL = 'media/'
+MEDIA_URL = '/media/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 

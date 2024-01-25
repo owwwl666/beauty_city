@@ -23,3 +23,7 @@ def profile(request):
 
 def notes(request):
     return render(request, 'notes.html', context={})
+
+def registration(request):
+    return render(request, 'registration.html', context={})
+

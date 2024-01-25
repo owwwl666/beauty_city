@@ -26,4 +26,3 @@ def notes(request):
 
 def registration(request):
     return render(request, 'registration.html', context={})
-

@@ -5,9 +5,8 @@ from phonenumber_field.modelfields import PhoneNumberField
 
 
 class Client(models.Model):
-    name = models.CharField("Имя", max_length=250)
-    phonenumber = PhoneNumberField("Телефон",
-                                   region="RU",
+    name = models.CharField(verbose_name="Имя", max_length=250)
+    phonenumber = PhoneNumberField(verbose_name="Телефон",
                                    db_index=True)
 
     class Meta:
@@ -19,8 +18,8 @@ class Client(models.Model):
 
 
 class Salon(models.Model):
-    name = models.CharField("Название", max_length=250)
-    address = models.CharField("Адрес", max_length=250)
+    name = models.CharField(verbose_name="Название", max_length=250)
+    address = models.CharField(verbose_name="Адрес", max_length=250)
 
     class Meta:
         verbose_name = "Все салоны красоты"
@@ -65,7 +64,7 @@ class Schedule(models.Model):
 
 
 class Service(models.Model):
-    name = models.CharField("Название", max_length=250)
+    name = models.CharField(verbose_name="Название", max_length=250)
     price = models.DecimalField("Цена",
                                 max_digits=9,
                                 decimal_places=2,

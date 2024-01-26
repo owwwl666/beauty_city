@@ -1,5 +1,4 @@
 from django.contrib import admin
-
 from salons.models import (Client, Master, Order, OrderItem, Salon,
                            SalonServiceItem, Schedule, Service)
 

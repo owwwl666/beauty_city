@@ -21,7 +21,7 @@ class MasterAdmin(admin.ModelAdmin):
 
 @admin.register(Schedule)
 class ScheduleAdmin(admin.ModelAdmin):
-    list_display = ["master", "date_time", "client"]
+    list_display = ["master", "date", "time", "client"]
 
 
 @admin.register(Service)
@@ -43,4 +43,4 @@ class OrderAdmin(admin.ModelAdmin):
 # make tabular inline inside of Order
 @admin.register(OrderItem)
 class OrderItemAdmin(admin.ModelAdmin):
-    list_display = ["order", "salon_service"]
+    list_display = ["order", "salon_service", "date", "time"]

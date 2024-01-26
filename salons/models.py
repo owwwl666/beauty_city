@@ -3,6 +3,18 @@ from django.db import models
 from django.db.models import F, Sum
 from phonenumber_field.modelfields import PhoneNumberField
 
+RESERVATION = [
+    ("10:00", "10:00"),
+    ("11:00", "11:00"),
+    ("12:00", "12:00"),
+    ("13:00", "13:00"),
+    ("15:00", "15:00"),
+    ("16:00", "16:00"),
+    ("17:00", "17:00"),
+    ("18:00", "18:00"),
+    ("19:00", "19:00"),
+]
+
 
 class Client(models.Model):
     name = models.CharField("Имя", max_length=250)
@@ -44,8 +56,12 @@ class Master(models.Model):
 
 
 class Schedule(models.Model):
-    date_time = models.DateTimeField("Дата и время",
-                                     db_index=True)
+    date = models.DateField("Дата",
+                            db_index=True)
+    time = models.CharField("Время",
+                            db_index=True,
+                            choices=RESERVATION,
+                            max_length=5)
     master = models.ForeignKey(Master,
                                verbose_name="Мастер",
                                related_name="shedules",
@@ -58,10 +74,10 @@ class Schedule(models.Model):
     class Meta:
         verbose_name = "Расписание"
         verbose_name_plural = "Расписание"
-        unique_together = ("master", "date_time")
+        unique_together = ("master", "date", "time")
 
     def __str__(self):
-        return self.date_time
+        return f"{self.date} - {self.time}"
 
 
 class Service(models.Model):
@@ -143,6 +159,12 @@ class OrderItem(models.Model):
     salon_service = models.ForeignKey(SalonServiceItem,
                                       on_delete=models.CASCADE,
                                       related_name="order_items")
+    date = models.DateField("Дата",
+                            db_index=True)
+    time = models.CharField("Время",
+                            db_index=True,
+                            choices=RESERVATION,
+                            max_length=5)
 
     class Meta:
         verbose_name = "Позиция в заказе"

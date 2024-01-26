@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Регистрация</title>
+	<link rel="stylesheet" href="{% static 'css/main.css' %}">
+</head>
+<body>
+<div class="reviewPopup popup_reg">
+		<div class="popup__title reviewPopup__title">Регистрация</div>
+		<form action="#" class="reviewPopup__form">
+			<input type="text" name="fname" class="paymentPopup__form_input popup__input" placeholder="Введите имя" required>
+      <input type="text" name="fsurname" class="paymentPopup__form_input popup__input" placeholder="Введите фамилию" required>
+			<div class="contacts__form_inputBlock">
+				<input type="text" name="tel" class="contacts__form_iunput" placeholder="+7(999)999--99-99" required="">
+			</div>
+			<div class="contacts__form_checkboxBlock fic">
+				<input type="checkbox" class="contacts__form_checkbox" checked>
+				<span class="contacts__form_checkboxBlock__intro">Я согласен(а) с политикой конфидециоальности</span>
+			</div>
+			<button class="tipsPopup__btn popup__btn">Зарегистрироваться</button>
+		</form>
+	</div>
+</body>

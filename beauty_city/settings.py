@@ -87,12 +87,12 @@ USE_I18N = True
 USE_TZ = True
 
 STATICFILES_DIRS = [
-    Path(BASE_DIR, 'assets'),
+    Path(BASE_DIR, 'static'),
 ]
 
 STATIC_URL = 'static/'
 
-STATIC_ROOT = Path(BASE_DIR, 'static')
+STATIC_ROOT = Path(BASE_DIR, 'staticfiles')
 
 MEDIA_ROOT = Path(BASE_DIR, 'media')
 

@@ -138,10 +138,12 @@ class Order(models.Model):
 class OrderItem(models.Model):
     order = models.ForeignKey(Order,
                               on_delete=models.CASCADE,
-                              related_name="items")
+                              related_name="items",
+                              verbose_name="Заказ")
     salon_service = models.ForeignKey(SalonServiceItem,
                                       on_delete=models.CASCADE,
-                                      related_name="order_items")
+                                      related_name="order_items",
+                                      verbose_name="Услуги салона")
 
     class Meta:
         verbose_name = "Позиция в заказе"

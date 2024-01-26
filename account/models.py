@@ -13,4 +13,4 @@ class Registration(models.Model):
         verbose_name_plural = "Зарегистрированные пользователи"
 
     def __str__(self):
-        return f'{self.name} {self.phonenumber}'
+        return f"{self.name} {self.phonenumber}"

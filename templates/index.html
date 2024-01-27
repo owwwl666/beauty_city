@@ -91,7 +91,6 @@
               <img src="{% static 'img/acc.svg' %}" alt="account" class="header__account_img">
               <span class="header__block_auth__intro">Войти</span>
             </div>
-            <a href="{% url 'registration' %}" class="header__block_registration"><strong>Регистрация</strong></a>
           </div>
         </div>
       </div>
@@ -704,6 +703,9 @@
         <span class="contacts__form_checkboxBlock__intro">Я согласен(а) с политикой конфидециоальности</span>
       </div>
       <button type="submit" class="popup__btn authPopup__btn">Отправить</button>
+      <div class="block_registration">
+        <a href="{% url 'registration' %}">Зарегистрируйтесь, если не входили ранее</a>
+      </div>
     </form>
   </div>
 </div>

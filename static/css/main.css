@@ -144,13 +144,12 @@ color: #323232;
 
 }
 
-.header__block_registration {
-	text-decoration: none;
-	margin-left: 50px;
+.block_registration {
+    margin: 0em 1em 1em 1em;
 	font-size: 15px;
 	font-weight: 500;
 	line-height: 127.52%;
-	color: #000000;
+	color: #323232;
 
 }
 

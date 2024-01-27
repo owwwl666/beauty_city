@@ -73,7 +73,7 @@
 					<div class="col-md-5 ">
 						<nav>
 						<ul class="menu">
-							<li class="menu__item"><a href="#" class="menu__item_link">Мастера</a></li>
+							<li class="menu__item"><a href="/" class="menu__item_link">Мастера</a></li>
 							<li class="menu__item"><a href="#" class="menu__item_link">Услуги</a></li>
 							<li class="menu__item"><a href="#" class="menu__item_link">Отзывы</a></li>
 							<li class="menu__item"><a href="#" class="menu__item_link">Контакты</a></li>
@@ -100,7 +100,7 @@
 		<div class="container">
 			<div class="service">
 				<div class="breadCrumbs">
-					<a href="#" class="breadCrumbs__item">На главную</a>
+					<a href="/" class="breadCrumbs__item">На главную</a>
 				</div>
 				<div class="service__block">
 					<h1 class="service__title">Запись на услугу</h1>
@@ -258,8 +258,8 @@
 				<div class="time__btns">
 					<div class="row">
 						<div class="col-md-12">
-							<button  class="time__btns_next">Далее</button>
-							<button  class="time__btns_home">На главную</button>
+							<button  class="time__btns_next" onclick="window.location.href='{% url 'service_finaly' %}'">Далее</button>
+							<button  class="time__btns_home" onclick="window.location.href='/'">На главную</button>
 						</div>
 					</div>
 				</div>

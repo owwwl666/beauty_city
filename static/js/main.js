@@ -366,7 +366,7 @@ $(document).ready(function() {
 
 	// })
 	// $('.accordion.selected').click(function() {
-	// 	$(this).parent().find('.panel').hasClass('selected') ? 
+	// 	$(this).parent().find('.panel').hasClass('selected') ?
 	// 	 $(this).parent().find('.panel').removeClass('selected')
 	// 		:
 	// 	$(this).parent().find('.panel').addClass('selected')

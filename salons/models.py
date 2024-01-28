@@ -3,6 +3,18 @@ from django.db import models
 from django.db.models import F, Sum
 from phonenumber_field.modelfields import PhoneNumberField
 
+RESERVATION = [
+    ("10:00", "10:00"),
+    ("11:00", "11:00"),
+    ("12:00", "12:00"),
+    ("13:00", "13:00"),
+    ("15:00", "15:00"),
+    ("16:00", "16:00"),
+    ("17:00", "17:00"),
+    ("18:00", "18:00"),
+    ("19:00", "19:00"),
+]
+
 
 class Client(models.Model):
     name = models.CharField(verbose_name="Имя", max_length=250)
@@ -29,10 +41,31 @@ class Salon(models.Model):
         return self.name
 
 
+class MasterSpecialization(models.Model):
+    name = models.CharField("Специализация",
+                            max_length=250)
+
+    class Meta:
+        verbose_name = "Специализация мастера"
+        verbose_name_plural = "Специализации мастеров"
+
+    def __str__(self):
+        return self.name
+
+
 class Master(models.Model):
-    name = models.CharField("Имя", max_length=250)
+    name = models.CharField("Имя и фамилия",
+                            max_length=250)
     photo = models.ImageField("Портрет",
-                              upload_to="")
+                              upload_to="",
+                              null=True,
+                              blank=True)
+    specialization = models.ForeignKey(MasterSpecialization,
+                                       verbose_name="Специализация",
+                                       db_index=True,
+                                       related_name="masters",
+                                       on_delete=models.CASCADE)
+
 
     class Meta:
         verbose_name = "Мастер"
@@ -43,8 +76,12 @@ class Master(models.Model):
 
 
 class Schedule(models.Model):
-    date_time = models.DateTimeField("Дата и время",
-                                     db_index=True)
+    date = models.DateField("Дата",
+                            db_index=True)
+    time = models.CharField("Время",
+                            db_index=True,
+                            choices=RESERVATION,
+                            max_length=5)
     master = models.ForeignKey(Master,
                                verbose_name="Мастер",
                                related_name="shedules",
@@ -57,10 +94,23 @@ class Schedule(models.Model):
     class Meta:
         verbose_name = "Расписание"
         verbose_name_plural = "Расписание"
-        unique_together = ("master", "date_time")
+        unique_together = ("master", "date", "time")
 
     def __str__(self):
-        return self.date_time
+        return f"{self.date} - {self.time}"
+
+
+class ServiceType(models.Model):
+    name = models.CharField("Тип услуги",
+                            db_index=True,
+                            max_length=21)
+
+    class Meta:
+        verbose_name = "Тип услуги"
+        verbose_name_plural = "Типы услуг"
+
+    def __str__(self):
+        return self.name
 
 
 class Service(models.Model):
@@ -69,6 +119,11 @@ class Service(models.Model):
                                 max_digits=9,
                                 decimal_places=2,
                                 validators=[MinValueValidator(0)])
+    type = models.ForeignKey(ServiceType,
+                             verbose_name="Тип услуги",
+                             on_delete=models.CASCADE,
+                             related_name="services",
+                             default="")
 
     class Meta:
         verbose_name = "Услуга"
@@ -113,6 +168,7 @@ class Order(models.Model):
     ]
 
     client = models.ForeignKey(Client,
+                               verbose_name="Клиент",
                                on_delete=models.CASCADE,
                                related_name="orders")
     status = models.CharField("Статус оплаты",
@@ -142,8 +198,19 @@ class OrderItem(models.Model):
                               verbose_name="Заказ")
     salon_service = models.ForeignKey(SalonServiceItem,
                                       on_delete=models.CASCADE,
+
                                       related_name="order_items",
                                       verbose_name="Услуги салона")
+
+                                      related_name="order_items")
+    date = models.DateField("Дата",
+                            db_index=True)
+    time = models.CharField("Время",
+                            db_index=True,
+                            choices=RESERVATION,
+                            max_length=5)
+    # feedback = models.TextField("Отзыв о мастере")
+
 
     class Meta:
         verbose_name = "Позиция в заказе"

@@ -1953,8 +1953,7 @@ text-align: left;
 }
 .popup__input {
 	font-weight: 400;
-font-size: 40px;
-line-height: 127.52%;
+	line-height: 127.52%;
 /* identical to box height, or 18px */
 padding-left: 15px;
 

@@ -5,4 +5,4 @@ from .models import Registration
 
 @admin.register(Registration)
 class RegistrationAdmin(admin.ModelAdmin):
-    list_display = ["name", "phonenumber"]
+    list_display = ["firstname", "phonenumber"]

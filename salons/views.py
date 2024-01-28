@@ -2,6 +2,8 @@ from django.shortcuts import render
 
 
 def service(request):
+    salon_id = request.GET.get('salon', None)
+    print(salon_id)
     return render(request, 'service.html', context={})
 
 

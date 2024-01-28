@@ -10,6 +10,7 @@
 <body>
 <div class="reviewPopup popup_reg">
 		<div class="popup__title reviewPopup__title">Регистрация</div>
+  
 		<form action="/api/reg/" method="post" class="reviewPopup__form">
       {% csrf_token %}
 			<input type="text" name="firstname" class="paymentPopup__form_input popup__input" placeholder="Введите имя" required>

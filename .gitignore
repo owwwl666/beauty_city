@@ -4,3 +4,5 @@ staticfiles
 **__pycache__
 db.sqlite3
 .mypy_cache
+**media
+**staticfiles

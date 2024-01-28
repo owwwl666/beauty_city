@@ -198,11 +198,9 @@ class OrderItem(models.Model):
                               verbose_name="Заказ")
     salon_service = models.ForeignKey(SalonServiceItem,
                                       on_delete=models.CASCADE,
-
                                       related_name="order_items",
                                       verbose_name="Услуги салона")
 
-                                      related_name="order_items")
     date = models.DateField("Дата",
                             db_index=True)
     time = models.CharField("Время",

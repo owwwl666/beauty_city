@@ -10,14 +10,15 @@
 <body>
 <div class="reviewPopup popup_reg">
 		<div class="popup__title reviewPopup__title">Регистрация</div>
-		<form action="#" class="reviewPopup__form">
-			<input type="text" name="fname" class="paymentPopup__form_input popup__input" placeholder="Введите имя" required>
-      <input type="text" name="fsurname" class="paymentPopup__form_input popup__input" placeholder="Введите фамилию" required>
+		<form action="/api/reg/" method="post" class="reviewPopup__form">
+      {% csrf_token %}
+			<input type="text" name="firstname" class="paymentPopup__form_input popup__input" placeholder="Введите имя" required>
+      <input type="text" name="lastname" class="paymentPopup__form_input popup__input" placeholder="Введите фамилию" required>
 			<div class="contacts__form_inputBlock">
-				<input type="text" name="tel" class="contacts__form_iunput" placeholder="+7(999)999--99-99" required="">
+				<input type="tel" name="phonenumber" class="contacts__form_iunput" placeholder="+7(999)999--99-99" required>
 			</div>
 			<div class="contacts__form_checkboxBlock fic">
-				<input type="checkbox" class="contacts__form_checkbox" checked>
+				<input type="checkbox" name="agree" class="contacts__form_checkbox" checked required>
 				<span class="contacts__form_checkboxBlock__intro">Я согласен(а) с политикой конфидециоальности</span>
 			</div>
 			<button class="tipsPopup__btn popup__btn">Зарегистрироваться</button>

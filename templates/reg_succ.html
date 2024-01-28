@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="author" content="CodeHim">
+  <title> Успешная регистрация </title>
+  <link rel="stylesheet" href="{% static '/css/style_reg.css' %}">
+</head>
+<body>
+<main class="cd__main">
+  <div id='card' class="animated fadeIn">
+    <div id='upper-side-succ'>
+      <h3 id='status'>
+        Успешно
+      </h3>
+    </div>
+    <div id='lower-side'>
+      <p id='message'>
+        Спасибо, за регистрацию! Авторизуйтесь по номеру телефона на главной странице сайта
+      </p>
+      <a href="{% url 'start_page' %}" id="contBtn-succ">Продолжить</a>
+    </div>
+  </div>
+</main>
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="author" content="CodeHim">
+  <title> Ошибка регистрации </title>
+  <link rel="stylesheet" href="{% static '/css/style_reg.css' %}">
+
+</head>
+<body>
+<main class="cd__main">
+  <div id='card' class="animated fadeIn">
+    <div id='upper-side-err'>
+      <h3 id='status'>
+        Ошибка
+      </h3>
+    </div>
+    <div id='lower-side'>
+      <p id='message'>
+        Ошибка регистрации! Проверьте введенные данные!
+      </p>
+      <a href="{% url 'account:registration' %}" id="contBtn-err">Продолжить</a>
+    </div>
+  </div>
+</main>
+</body>
+</html>

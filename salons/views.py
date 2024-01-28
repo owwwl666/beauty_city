@@ -1,10 +1,6 @@
 from django.shortcuts import render
 
 
-def index(request):
-    return render(request, 'index.html', context={})
-
-
 def service(request):
     return render(request, 'service.html', context={})
 
@@ -23,6 +19,3 @@ def profile(request):
 
 def notes(request):
     return render(request, 'notes.html', context={})
-
-def registration(request):
-    return render(request, 'registration.html', context={})
